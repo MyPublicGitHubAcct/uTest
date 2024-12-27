@@ -158,6 +158,7 @@ __5. Create a virtualenv__
 
 ```zsh
 # Create a virtualenv
+
 pyenv virtualenv 3.13.3 myproject
 
 # Activate the environment
@@ -202,27 +203,35 @@ __TODO__
 
 ```zsh
 # To make an image
+
 docker build -t my-image .
 
 # To list existing images
+
 docker images
 
 # Create a container for the image
+
 docker create -i -t  --entrypoint="/bin/bash" --name my-container my-image
 
 # List all containers
+
 docker container ls -a
 
 # Start a container
+
 docker start -i my-container
 
 # Leave the container
+
 exit
 
 # Remove a container
+
 docker rm my-container
 
 # Delete an image
+
 docker rmi my-image
 ```
 
@@ -243,6 +252,8 @@ These are probably the include and library files to link to..
 /opt/homebrew/Cellar/cpputest/4.0/lib
 
 CPPUTEST_HOME - define in Makefile for each platform in each test/folder
+On Docker, already defined when CppUTest was installed, /opt/cpputest/
+On mac, /opt/homebrew/Cellar/cpputest
 
 /opt/cpputest/build/MakefileWorker.mk
 
