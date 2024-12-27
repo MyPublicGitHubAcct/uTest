@@ -4,15 +4,17 @@
 ## The local environment
 
 
-### Homebrew
+### Local: Homebrew
 
-Install
+
+#### Install
 
 ```zsh
 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 ```
 
-Common commands
+
+#### Common commands
 
 ```zsh
 # Display the version of Homebrew.
@@ -92,7 +94,20 @@ brew cleanup <formula>
 brew cleanup -n
 ```
 
-### Python
+
+### Local: CppUTest
+
+
+#### Install
+
+This will put CppUTest in ```/opt/homebrew/Cellar/cpputest/```
+
+```zsh
+brew install cpputest
+```
+
+
+### Local: Python
 
 __1. Install XCode Command Line Tools__
 
@@ -100,7 +115,6 @@ __1. Install XCode Command Line Tools__
 ```zsh
 xcode-select --install
 ```
-
 
 __2. Install HomeBrew__
 
@@ -110,12 +124,12 @@ brew update
 brew upgrade
 ```
 
-
 __3. Install Pyenv__
 
 ```zsh
 # Install
 
+brew install openssl readline sqlite3 xz zlib tcl-tk@8
 brew install pyenv pyenv-virtualenv
 
 # Initalise pyenv and pyenv-virtualenv - place the following lines in .zshrc in your home directory.
@@ -140,7 +154,6 @@ pyenv install 3.13.3
 pyenv versions
 ```
 
-
 __5. Create a virtualenv__
 
 ```zsh
@@ -156,12 +169,27 @@ pyenv local myproject
 pyenv virtualenv-delete myproject
 ```
 
-### Rancher Desktop (SUSE Docker alternative)
+__6. Install packages__
+
+__TODO__
+
+```zsh
+pyenv local mypython
+pip3 install STUFF
+```
+
+
+### Local: Rancher Desktop (SUSE Docker alternative)
 
 Install [Rancher](https://rancherdesktop.io) to allow use of Docker commands. Use the [Manual](https://docs.rancherdesktop.io).
 
 
-#### The Docker file will install
+## The Container / GitHub Actions
+
+__TODO__
+
+
+### The Docker file will install
 
 - Linux - latest Ubuntu
 - wget, make, git, build-essential, cpputest
@@ -169,10 +197,7 @@ Install [Rancher](https://rancherdesktop.io) to allow use of Docker commands. Us
 - Python3
 
 
-## Docker information
-
-
-### Helpful Commands
+### Helpful Docker Commands
 
 
 ```zsh
@@ -207,11 +232,36 @@ docker rmi my-image
 __TODO__
 
 
-## Hold for later
+## Hold for later - random notes
 
 These are probably the include and library files to link to..
 
 -I/usr/local/include
 -L/usr/local/lib -lstdc++ -lCppUTest -lCppUTestExt
 
+/opt/homebrew/Cellar/cpputest/4.0/include
+/opt/homebrew/Cellar/cpputest/4.0/lib
+
+CPPUTEST_HOME - define in Makefile for each platform in each test/folder
+
+/opt/cpputest/build/MakefileWorker.mk
+
+
+## Resources
+
+[Getting Started with Docker](https://www.digikey.com/en/maker/projects/getting-started-with-docker/aa0d4c708c274ffd975f3b427e5c0ce6)
+
+[video 1](https://youtu.be/1nxGcfIm-TU?si=HM5iCnvCwbnJ7ML0)
+
+[Getting Started with GitHub Actions](https://www.digikey.com/en/maker/projects/getting-started-with-github-actions/078a1db505844a3ea9354bb0499973f4)
+
+[video 2](https://youtu.be/8pyqbYDYkRs?si=H2iZdcAHYVBOgaNU)
+
+[Writing C/C++ Unit Tests with CppUTest](https://www.digikey.com/en/maker/projects/writing-cc-unit-tests-with-cpputest/7776121323b74ae7b20725cf06163537)
+
+[video 3](https://youtu.be/lZWFmEhIhpY?si=BvM5IAiuqC6HMMUD)
+
+[Continuous Deployment Using Docker and GitHub Actions](https://www.digikey.com/en/maker/projects/continuous-deployment-using-docker-and-github-actions/d9d18e19361647dbb49070ce6f96c2ea)
+
+[video 4](https://youtu.be/3ccQ_0YeZX4?si=j-dleB22AsZ9H_w3)
 

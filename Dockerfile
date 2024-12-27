@@ -1,6 +1,7 @@
 # Fetch ubuntu image from Docker
 FROM ubuntu:24.04
 
+
 # Install packages
 RUN \
     apt-get update && \
@@ -13,7 +14,7 @@ RUN \
     apt-get install -y automake && \
     apt-get install -y build-essential && \
     apt-get install -y python3
-    # apt-get install -y zsh
+
 
 # Download and install cpputest
 WORKDIR /opt/cpputest
@@ -25,6 +26,7 @@ RUN autoreconf . -i && \
 
 ENV CPPUTEST_HOME=/opt/cpputest
 
+
 # Download and install the ARM toolchain - https://developer.arm.com/downloads/-/arm-gnu-toolchain-downloads
 WORKDIR /opt/arm
 RUN \
@@ -35,16 +37,15 @@ RUN \
 
 ENV PATH="/toolchain-none-eabi/bin:${PATH}"
 
-###### Project files
 
-# # Create a directory for our tests
-# RUN mkdir /tests
+# Copy project into the Docker image
+WORKDIR /
 
-# # Copy in our Python script
-# COPY test.py /tests/test.py
+RUN mkdir /project
+COPY src /project/src
+COPY tests /project/tests
+COPY Makefile /project/Makefile
 
-# # Copy in our program under test
-# COPY /src/main.c /tests/main.c
 
-# # Command that will be invoked when container starts
-# ENTRYPOINT ["python3", "tests/test.py"]
+# Execute script
+ENTRYPOINT ["make", "test", "-C", "/project/"]
